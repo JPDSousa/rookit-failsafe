@@ -59,6 +59,7 @@ public final class FailsafeModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(Failsafe.class).to(BaseFailsafe.class).in(Singleton.class);
+        bind(ExceptionHandler.class).to(ExceptionHandlerImpl.class).in(Singleton.class);
     }
 
 }
