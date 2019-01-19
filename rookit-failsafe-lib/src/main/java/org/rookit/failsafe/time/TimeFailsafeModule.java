@@ -28,6 +28,7 @@ import com.google.inject.Singleton;
 import org.rookit.failsafe.ObjectFailsafe;
 import org.rookit.failsafe.TimeFailsafe;
 import org.rookit.failsafe.guice.Argument;
+import org.rookit.failsafe.guice.State;
 
 public final class TimeFailsafeModule extends AbstractModule {
 
@@ -46,7 +47,15 @@ public final class TimeFailsafeModule extends AbstractModule {
 
     @Provides
     @Singleton
+    @Argument
     TimeFailsafe argumentFailsafe(@Argument final ObjectFailsafe objectFailsafe) {
+        return new BaseTimeFailsafe(objectFailsafe);
+    }
+
+    @Provides
+    @Singleton
+    @State
+    TimeFailsafe stateFailsafe(@State final ObjectFailsafe objectFailsafe) {
         return new BaseTimeFailsafe(objectFailsafe);
     }
 }
