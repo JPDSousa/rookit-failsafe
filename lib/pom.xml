@@ -2,33 +2,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>rookit-failsafe</artifactId>
-        <groupId>com.github.JPDSousa</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rookit-failsafe-api</artifactId>
+    <parent>
+        <groupId>com.github.JPDSousa.rookit-failsafe</groupId>
+        <artifactId>rookit-failsafe</artifactId>
+        <version>-SNAPSHOT</version>
+    </parent>
 
-    <name>Rookit Failsafe API</name>
+    <artifactId>lib</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>${rookit.group}</groupId>
-            <artifactId>rookit-utils-api</artifactId>
+            <groupId>${rookit.group}.rookit-failsafe</groupId>
+            <artifactId>api</artifactId>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>${rookit.group}</groupId>
-                <artifactId>rookit-utils-api</artifactId>
+                <groupId>${rookit.group}.rookit-failsafe</groupId>
+                <artifactId>api</artifactId>
                 <version>${rookit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
 </project>
