@@ -28,6 +28,4 @@ public interface OptionalFailsafe extends ObjectFailsafe {
 
     <T, I> T doesNotContain(Logger logger, Optional<I> objectOrNone, I expected, String objectOrNoneName);
 
-    <T, I> T doesNotContain(Logger logger, java.util.Optional<I> objectOrNone, I expected, String objectOrNoneName);
-
 }

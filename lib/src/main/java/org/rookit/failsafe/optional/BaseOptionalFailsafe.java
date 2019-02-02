@@ -26,9 +26,6 @@ import org.rookit.failsafe.OptionalFailsafe;
 import org.rookit.failsafe.object.DelegateObjectFailsafe;
 import org.slf4j.Logger;
 
-import java.util.Objects;
-import java.util.Optional;
-
 final class BaseOptionalFailsafe extends DelegateObjectFailsafe implements OptionalFailsafe {
 
     BaseOptionalFailsafe(final ObjectFailsafe delegate) {
@@ -44,14 +41,4 @@ final class BaseOptionalFailsafe extends DelegateObjectFailsafe implements Optio
                 expected);
     }
 
-    @Override
-    public <T, I> T doesNotContain(final Logger logger,
-                                   final Optional<I> objectOrNone,
-                                   final I expected,
-                                   final String objectOrNoneName) {
-        isNotNull(logger, objectOrNone, objectOrNoneName);
-
-        final boolean condition = !objectOrNone.isPresent() || !Objects.equals(objectOrNone.get(), expected);
-        return is(logger, condition, "The %s does not contain %s", objectOrNoneName, expected);
-    }
 }
