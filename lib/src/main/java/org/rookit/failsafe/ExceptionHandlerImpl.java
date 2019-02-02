@@ -47,12 +47,15 @@ final class ExceptionHandlerImpl implements ExceptionHandler {
 
     @Override
     public <T> T runtimeException(final Throwable cause) {
+        if (cause instanceof RuntimeException) {
+            throw (RuntimeException) cause;
+        }
         throw new RuntimeException(cause);
     }
 
     @Override
-    public <T> T invocationTargetException(final InvocationTargetException cause) {
-        throw toRuntime(new InvocationTargetException(cause));
+    public <T> T invocationTargetException(final InvocationTargetException exception) {
+        return runtimeException(exception.getCause());
     }
 
     @Override
