@@ -39,8 +39,9 @@ final class BaseObjectFailsafe implements ObjectFailsafe {
     @Override
     public <T> T is(final Logger logger, final boolean condition, final String message, final Object... args) {
         if (!condition) {
-            logger.error(message);
-            throw this.exceptionSupplier.apply(message);
+            final String errorMessage = String.format(message, args);
+            logger.error(errorMessage);
+            throw this.exceptionSupplier.apply(errorMessage);
         }
         return null;
     }
