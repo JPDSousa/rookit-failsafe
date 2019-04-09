@@ -23,6 +23,7 @@ package org.rookit.failsafe;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.ExecutionException;
 
 final class ExceptionHandlerImpl implements ExceptionHandler {
 
@@ -61,5 +62,10 @@ final class ExceptionHandlerImpl implements ExceptionHandler {
     @Override
     public <T> T unsupportedOperation(final String message, final Object... args) {
         throw new UnsupportedOperationException(String.format(message, args));
+    }
+
+    @Override
+    public <T> T executionException(final ExecutionException exception) {
+        return runtimeException(exception.getCause());
     }
 }

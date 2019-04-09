@@ -23,6 +23,7 @@ package org.rookit.failsafe;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.ExecutionException;
 
 public interface ExceptionHandler {
 
@@ -38,4 +39,5 @@ public interface ExceptionHandler {
 
     <T> T unsupportedOperation(String message, Object... args);
 
+    <T> T executionException(ExecutionException e);
 }
